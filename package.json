@@ -1,0 +1,33 @@
+{
+  "name": "azwebdevs.org",
+  "version": "2.0.0",
+  "description": "az-webdevs.io",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "lint": "standard",
+    "postinstall": "npm prune",
+    "prestart": "npm run start:mongo",
+    "start": "nodemon -e js,hbs,scss,yml --exec \"nf start\"; npm stop",
+    "stop": "npm run stop:mongo",
+    "start:mongo": "mongod --config mongod.conf --fork",
+    "stop:mongo": "killall -9 mongod",
+    "sass": "node-sass -w scss/main.scss -o public/styles/",
+    "test": "npm run lint"
+  },
+  "author": "Kevin Lanni (https://github.com/therealklanni)",
+  "license": "MIT",
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/therealklanni/azwebdevs.org.git"
+  },
+  "bugs": {
+    "url": "https://github.com/therealklanni/azwebdevs.org/issues"
+  },
+  "homepage": "https://github.com/therealklanni/azwebdevs.org#readme"
+}
