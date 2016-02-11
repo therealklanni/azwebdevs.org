@@ -1,23 +1,17 @@
-import bug from 'debug'
-const debug = bug('SIR:server')
+import logger from './common/lib/logger'
+const debug = logger('SIR:server')
 
-import perf from './lib/perf'
+import perf from './server/lib/perf'
 const serverStart = perf.start()
 
 import koa from 'koa'
 const app = koa()
 
-app.use(function *(next) {
-  var start = perf.start()
-  yield next
-  this.set('X-Response-Time', perf.since(start))
-})
+import responseTimer from './server/middleware/response-timer'
+app.use(responseTimer)
 
-app.use(function *(next) {
-  var start = perf.start()
-  yield next
-  debug(this.method, this.url, perf.stop(start))
-})
+import requestLogger from './server/middleware/request-logger'
+app.use(requestLogger)
 
 app.use(function *(next) {
   this.body = 'Hello world'
@@ -26,5 +20,5 @@ app.use(function *(next) {
 
 const port = process.env.PORT || 3000
 app.listen(port, () => {
-  debug(`Server running at http://localhost:${port} ${perf.stop(serverStart)}`)
+  debug(`Server running at http://localhost:${port}`, perf.stop(serverStart))
 })
