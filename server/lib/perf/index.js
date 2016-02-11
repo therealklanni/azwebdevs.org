@@ -7,10 +7,10 @@ class Perf {
 
   stop (microtime) {
     return μs.parse(μs.since(microtime)).toString()
-      .replace(' minutes', 'm')
-      .replace(' seconds', 's')
-      .replace(' milliseconds', 'ms')
-      .replace(' microseconds', 'μs')
+      .replace(/ minutes?/, 'm')
+      .replace(/ seconds?/, 's')
+      .replace(/ milliseconds?/, 'ms')
+      .replace(/ microseconds?/, 'μs')
       .replace(/^(.*)$/, '($1)')
   }
 
