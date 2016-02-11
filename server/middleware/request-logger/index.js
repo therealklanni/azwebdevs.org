@@ -8,7 +8,6 @@ export default function * requestLogger (next) {
   var start = perf.start()
   yield next
 
-  this.response.status = 302
   let statusColor = 'white'
 
   switch (this.response.status.toString().replace(/\d\d$/, 'xx')) {
