@@ -9,9 +9,6 @@
     "HEROKU_PARENT_APP_NAME": {
       "required": true
     },
-    "BASE_URL": {
-      "required": true
-    },
     "CLIENT_ID": {
       "required": true
     },
