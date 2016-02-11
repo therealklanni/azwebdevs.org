@@ -5,13 +5,13 @@
   "private": true,
   "scripts": {
     "lint": "standard",
-    "postinstall": "npm prune",
+    "postinstall": "npm run build; npm prune",
     "prestart": "npm run start:mongo",
-    "start": "nodemon -e js,jsx --exec \"nf start\"; npm stop",
+    "start": "npm run build; nodemon -e js,jsx --exec \"nf start\"; npm stop",
     "stop": "npm run stop:mongo",
     "start:mongo": "mongod --config mongod.conf --fork",
     "stop:mongo": "killall -9 mongod",
-    "sass": "node-sass -w scss/main.scss -o public/styles/",
+    "build": "babel src -wd build",
     "test": "npm run lint"
   },
   "author": "Kevin Lanni (https://github.com/therealklanni)",
@@ -32,7 +32,6 @@
   "dependencies": {
     "babel-cli": "^6.5.1",
     "babel-preset-es2015": "^6.5.0",
-    "babel-register": "^6.5.1",
     "chalk": "^1.1.1",
     "debug": "^2.2.0",
     "koa": "^1.1.2",
