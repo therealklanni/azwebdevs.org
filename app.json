@@ -3,6 +3,11 @@
   "scripts": {
   },
   "env": {
+    "SECRET_TOKEN": {
+      "description": "A secret key for verifying the integrity of signed cookies",
+      "required": true,
+      "generator": "secret"
+    },
     "HEROKU_APP_NAME": {
       "required": true
     },
@@ -10,9 +15,11 @@
       "required": true
     },
     "CLIENT_ID": {
+      "description": "GitHub App Client ID",
       "required": true
     },
     "CLIENT_SECRET": {
+      "description": "GitHub App Client Secret",
       "required": true
     },
     "GA_TOKEN": {
