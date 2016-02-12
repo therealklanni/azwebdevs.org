@@ -8,6 +8,8 @@ const serverStart = perf.start()
 import koa from 'koa'
 const app = koa()
 
+app.keys = [process.env.SECRET_TOKEN || 'ohai^^']
+
 import compose from 'koa-compose'
 
 // middleware
