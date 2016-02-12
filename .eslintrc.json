@@ -1,0 +1,14 @@
+{
+  "extends":  "eslint-config-troysconfig",
+  "rules": {
+      "space-before-function-paren": [2, { "anonymous": "always", "named": "never"  }]
+  },
+  "env": {
+      "node": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  }
+}

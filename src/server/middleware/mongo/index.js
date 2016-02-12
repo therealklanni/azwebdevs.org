@@ -14,7 +14,7 @@ db.once('open', () => {
   debug('MongoDB connected')
 })
 
-export default () => function * mongodb (next) {
+export default () => function *mongodb(next) {
   this.db = db
   this.db.User = User
 

@@ -4,7 +4,7 @@
   "description": "azwebdevs.org",
   "private": true,
   "scripts": {
-    "lint": "standard",
+    "lint": "eslint . --cache",
     "postinstall": "npm run build && npm prune",
     "prestart": "npm run start:mongo",
     "start": "nodemon --ignore build/ -e js,jsx --exec \"npm run build && nf start\"; npm stop",
@@ -16,11 +16,6 @@
   },
   "author": "Kevin Lanni (https://github.com/therealklanni)",
   "license": "MIT",
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/therealklanni/azwebdevs.org.git"
@@ -45,8 +40,9 @@
     "mongoose-findorcreate": "^0.1.2"
   },
   "devDependencies": {
+    "eslint": "^2.0.0",
+    "eslint-config-troysconfig": "^1.0.7",
     "foreman": "^1.4.1",
-    "nodemon": "^1.8.1",
-    "standard": "^6.0.4"
+    "nodemon": "^1.8.1"
   }
 }
