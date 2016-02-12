@@ -8,11 +8,18 @@ const serverStart = perf.start()
 import koa from 'koa'
 const app = koa()
 
-import responseTimer from './server/middleware/response-timer'
-app.use(responseTimer)
+import compose from 'koa-compose'
 
+// middleware
+import responseTimer from './server/middleware/response-timer'
 import requestLogger from './server/middleware/request-logger'
-app.use(requestLogger)
+import bodyParser from 'koa-bodyparser'
+
+app.use(compose([
+  responseTimer(),
+  requestLogger(),
+  bodyParser()
+]))
 
 app.use(function *(next) {
   this.body = 'Hello world'
