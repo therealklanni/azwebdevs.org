@@ -36,7 +36,13 @@
     "chalk": "^1.1.1",
     "debug": "^2.2.0",
     "koa": "^1.1.2",
-    "microseconds": "^0.1.0"
+    "koa-bodyparser": "^2.0.1",
+    "koa-compose": "^2.3.0",
+    "koa-session": "^3.3.1",
+    "koa-static": "^2.0.0",
+    "microseconds": "^0.1.0",
+    "mongoose": "^4.4.3",
+    "mongoose-findorcreate": "^0.1.2"
   },
   "devDependencies": {
     "foreman": "^1.4.1",
