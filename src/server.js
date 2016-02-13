@@ -19,10 +19,12 @@ import requestLogger from './server/middleware/request-logger'
 import session from 'koa-session'
 import bodyParser from 'koa-bodyparser'
 import serve from 'koa-static'
+import mongo from './server/middleware/mongo'
 
 app.use(compose([
   responseTimer(),
   requestLogger(),
+  mongo(),
   session(app, {
     signed: true,
     secure: true,
