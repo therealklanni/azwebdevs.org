@@ -34,5 +34,8 @@ export default () => function * requestLogger (next) {
     chalk.bold[statusColor](this.response.status),
     perf.stop(start)
   )
-  debugBody(JSON.stringify(this.request.body, null, 4))
+
+  if (Object.keys(this.request.body).length) {
+    debugBody(JSON.stringify(this.request.body, null, 4))
+  }
 }
