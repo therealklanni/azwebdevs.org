@@ -16,7 +16,7 @@ db.once('open', () => {
 
 export default () => function * mongodb (next) {
   this.db = db
-  this.db.User = User;
+  this.db.User = User
 
   yield next
 }
