@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import logger from './common/lib/logger'
 const debug = logger('SIR:server')
 
