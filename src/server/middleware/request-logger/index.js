@@ -1,10 +1,11 @@
 import logger from '../../../common/lib/logger'
 const debug = logger('SIR:request')
+const debugBody = logger('SIR:request:body')
 
 import chalk from 'chalk'
 import perf from '../../lib/perf'
 
-export default function * requestLogger (next) {
+export default () => function * requestLogger (next) {
   var start = perf.start()
   yield next
 
@@ -33,4 +34,8 @@ export default function * requestLogger (next) {
     chalk.bold[statusColor](this.response.status),
     perf.stop(start)
   )
+
+  if (Object.keys(this.request.body).length) {
+    debugBody(JSON.stringify(this.request.body, null, 4))
+  }
 }
