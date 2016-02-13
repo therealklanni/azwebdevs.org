@@ -1,11 +1,11 @@
 import μs from 'microseconds'
 
 class Perf {
-  start () {
+  start() {
     return μs.now()
   }
 
-  stop (microtime) {
+  stop(microtime) {
     return μs.parse(μs.since(microtime)).toString()
       .replace(/ minutes?/, 'm')
       .replace(/ seconds?/, 's')
@@ -14,7 +14,7 @@ class Perf {
       .replace(/^(.*)$/, '($1)')
   }
 
-  since (microtime) {
+  since(microtime) {
     return μs.since(microtime)
   }
 }

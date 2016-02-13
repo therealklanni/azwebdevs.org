@@ -5,7 +5,7 @@ const debugBody = logger('SIR:request:body')
 import chalk from 'chalk'
 import perf from '../../lib/perf'
 
-export default () => function * requestLogger (next) {
+export default () => function *requestLogger(next) {
   var start = perf.start()
   yield next
 
