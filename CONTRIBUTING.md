@@ -52,6 +52,7 @@ Currently, this project uses JS Standard Style. Make sure you follow the style a
 All pull requests should follow these simple rules:
 
 - Create a branch for your work; do not submit PRs from your master branch, please
+- PR to this repository's master branch (master is treated as a staging environment)
 - One feature/bug per branch; if you are working on multiple issues (good for you! :beers:), do so in separate branches
 - Make [atomic commits](https://en.wikipedia.org/wiki/Atomic_commit#Atomic_commit_convention); each commit should encompass one "whole" change. An example is any changes (even across multiple files) that relates to fixing whitespace, or changes that refactor a function, etc. If you can't revert your commit without breaking something else, *it's not atomic!*
 - Conversely to the above: do not make one large single commit if you are making major revisions to the code (this is only appropriate if you are making one small change, like a bug fix)
