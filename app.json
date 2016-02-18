@@ -3,7 +3,12 @@
   "scripts": {
   },
   "env": {
-    "SECRET_TOKEN": {
+    "SECRET_TOKEN1": {
+      "description": "A secret key for verifying the integrity of signed cookies",
+      "required": true,
+      "generator": "secret"
+    },
+    "SECRET_TOKEN2": {
       "description": "A secret key for verifying the integrity of signed cookies",
       "required": true,
       "generator": "secret"
