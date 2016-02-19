@@ -18,7 +18,7 @@ export default (app, options = {
 
   return function *(next) {
     this.__defineGetter__('session', () => {
-      const session = { ..._session }
+      const session = _session
       if (session) return session
 
       // unset
