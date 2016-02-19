@@ -1,7 +1,6 @@
 import logger from '../../../common/lib/logger'
 const debug = logger('SIR:session')
 
-import { v4 as uuid } from 'uuid'
 import crypto from '../../lib/crypto'
 import Session from '../../lib/db/session'
 
