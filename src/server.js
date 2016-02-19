@@ -17,6 +17,7 @@ import compose from 'koa-compose'
 // middleware
 import responseTimer from './server/middleware/response-timer'
 import requestLogger from './server/middleware/request-logger'
+import session from './server/middleware/session'
 import bodyParser from 'koa-bodyparser'
 import serve from 'koa-static'
 import mongo from './server/middleware/mongo'
@@ -27,7 +28,6 @@ app.use(compose([
   mongo(),
   session(app, {
     key: 'sir.sid',
-    signed: true,
     maxAge: 259200000 // 72 hours
   }),
   bodyParser(),
