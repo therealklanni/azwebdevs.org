@@ -12,11 +12,13 @@ const cookieOptions = {
 export default (app, options = {
   key: 'koa:sess'
 }) => {
-  let _session, sessionDoc, sessionId
+  let _session
+  let sessionDoc
+  let sessionId
 
   return function *(next) {
     this.__defineGetter__('session', () => {
-      const session = _session
+      const session = { ..._session }
       if (session) return session
 
       // unset
