@@ -10,7 +10,7 @@
     "start": "nodemon --ignore build/ -e js,jsx --exec \"npm run build && nf start\"; npm stop",
     "stop": "npm run stop:mongo",
     "start:mongo": "mongod --config mongod.conf --fork",
-    "stop:mongo": "killall -9 mongod",
+    "stop:mongo": "killall -9 mongod && echo Press ENTER to continue",
     "build": "babel src -d build",
     "test": "npm run lint"
   },
