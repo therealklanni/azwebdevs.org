@@ -11,7 +11,10 @@
     "stop": "npm run stop:mongo",
     "start:mongo": "mongod --config mongod.conf --fork",
     "stop:mongo": "killall -9 mongod && echo Press ENTER to continue",
-    "build": "babel src -d build",
+    "build": "npm run build:clean && npm run build:server && npm run build:common",
+    "build:clean": "rimraf build",
+    "build:common": "babel --source-root src --source-maps inline -d build/common src/common",
+    "build:server": "babel --source-root src --source-maps inline -d build/server src/server",
     "test": "npm run lint"
   },
   "author": "Kevin Lanni (https://github.com/therealklanni)",
