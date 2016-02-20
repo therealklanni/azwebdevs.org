@@ -2,7 +2,7 @@ import logger from '../../../common/lib/logger'
 const debug = logger('SIR:session')
 
 import crypto from '../../lib/crypto'
-import Session from '../../lib/db/session'
+import Session from '../../lib/db/model/session'
 
 const cookieOptions = {
   signed: true,
