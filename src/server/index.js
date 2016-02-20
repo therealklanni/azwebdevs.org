@@ -4,10 +4,10 @@ import { v4 as uuid } from 'uuid'
 import koa from 'koa'
 const app = koa()
 
-import logger from './common/lib/logger'
+import logger from '../common/lib/logger'
 const debug = logger('SIR:server')
 
-import perf from './server/lib/perf'
+import perf from './lib/perf'
 const serverStart = perf.start()
 
 app.keys = [process.env.SECRET_TOKEN1 || uuid(), process.env.SECRET_TOKEN2 || uuid()]
@@ -15,12 +15,12 @@ app.keys = [process.env.SECRET_TOKEN1 || uuid(), process.env.SECRET_TOKEN2 || uu
 import compose from 'koa-compose'
 
 // middleware
-import responseTimer from './server/middleware/response-timer'
-import requestLogger from './server/middleware/request-logger'
-import session from './server/middleware/session'
+import responseTimer from './middleware/response-timer'
+import requestLogger from './middleware/request-logger'
+import session from './middleware/session'
 import bodyParser from 'koa-bodyparser'
 import serve from 'koa-static'
-import mongo from './server/middleware/mongo'
+import mongo from './middleware/mongo'
 
 app.use(compose([
   responseTimer(),
