@@ -2,37 +2,24 @@ import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import autoprefixer from 'autoprefixer'
 import path from 'path'
-import deepextend from 'deep-extend'
 
-const clientJs = path.resolve('client/index.js')
-const serverJs = path.resolve('src/server.js')
-
-let jsLoaders = 'babel-loader'
+let jsLoaders = ['babel?presets[]=react,presets[]=2015']
 
 if (process.env.NODE_ENV !== 'production') {
-  jsLoaders = ['react-hot', 'babel-loader?presets[]=react,presets[]=es2015']
+  jsLoaders.unshift('react-hot')
 }
 
 const config = {
-  entry: {
-    client: getEntrySources([clientJs]),
-    server: serverJs
-  },
-  devtool: 'eval',
+  entry: getEntrySources([path.resolve('client/index')]),
   output: {
     path: path.resolve('build'),
-    filename: '[name].js'
+    filename: 'bundle.js'
   },
   module: {
     loaders: [
       {
         test: /\.scss$/,
-        loaders: ExtractTextPlugin.extract(
-          'style-loader',
-          'css-loader?sourceMap',
-          'postcss-loader',
-          'sass-loader?sourceMap'
-        )
+        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
       },
       {
         test: /\.js$/,
@@ -41,11 +28,9 @@ const config = {
       }
     ]
   },
-  // sassLoader: {
-  //   includePaths: [path.resolve('client/scss')]
-  // },
   postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin('styles.css', {
       allChunks: true
     })
@@ -57,8 +42,8 @@ const config = {
 
 function getEntrySources(sources) {
   if (process.env.NODE_ENV !== 'production') {
-    sources.push('webpack-dev-server/client?http://localhost:8080');
-    sources.push('webpack/hot/only-dev-server');
+    sources.push('webpack-dev-server/client?http://localhost:3001')
+    sources.push('webpack/hot/only-dev-server')
   }
 
   return sources

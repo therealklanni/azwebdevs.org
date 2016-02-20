@@ -48,3 +48,22 @@ const port = process.env.PORT || 3000
 app.listen(port, () => {
   debug(`Server running at http://localhost:${port}`, perf.stop(serverStart))
 })
+
+// Webpack Dev Server for hot reloading
+import webpack from 'webpack'
+import WebpackDevServer from 'webpack-dev-server'
+import config from './webpack.config.babel.js'
+
+new WebpackDevServer(webpack(config), {
+  hot: true,
+  historyApiFallback: true,
+  proxy: {
+    '*': 'http://localhost:3000'
+  }
+}).listen(3001, 'localhost', (err, result) => {
+  if (err) {
+    debug(err)
+  }
+
+  debug(`${result}: Listening at http://localhost:30001`)
+})
