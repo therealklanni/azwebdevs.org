@@ -1,4 +1,4 @@
-import 'babel-register'
+import 'babel-core/register'
 import test from 'ava'
 import { encrypt, decrypt } from '../src/server/lib/crypto'
 
