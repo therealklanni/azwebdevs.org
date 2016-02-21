@@ -1,8 +1,8 @@
+import 'babel-polyfill'
 import logger from '../../../common/lib/logger'
 const debug = logger('SIR:session')
 
 import crypto from '../../lib/crypto'
-import Session from '../../lib/db/session'
 
 const cookieOptions = {
   signed: true,
@@ -50,7 +50,7 @@ export default (app, options = {
     }
 
     if (sessionId) {
-      sessionDoc = yield Session.findById(sessionId, '-expires')
+      sessionDoc = yield this.db.Session.findById(sessionId, '-expires')
       if (sessionDoc) {
         debug('Found session', sessionDoc)
       } else {
@@ -69,10 +69,10 @@ export default (app, options = {
 
     if (sessionDoc) {
       this.cookies.set(options.key, crypto.encrypt(`${sessionId}`, app.keys), cookieOptions)
-      sessionDoc = yield Session.findByIdAndUpdate(sessionId, { session: sessionData || '{}', expires: Date.now() })
+      sessionDoc = yield this.db.Session.findByIdAndUpdate(sessionId, { session: sessionData || '{}', expires: Date.now() })
       debug('Updated Session', sessionDoc)
     } else {
-      sessionDoc = yield Session.create({ session: sessionData || '{}', expires: Date.now() })
+      sessionDoc = yield this.db.Session.create({ session: sessionData || '{}', expires: Date.now() })
       sessionId = sessionDoc._id
       _session = JSON.parse(sessionDoc.session)
       this.cookies.set(options.key, crypto.encrypt(`${sessionId}`, app.keys), cookieOptions)

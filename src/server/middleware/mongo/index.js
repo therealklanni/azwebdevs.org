@@ -3,6 +3,7 @@ const debug = logger('SIR:mongo')
 
 import mongoose from 'mongoose'
 import User from '../../lib/db/model/user'
+import Session from '../../lib/db/model/session'
 
 mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGO_DB || 'mongodb://localhost/azwebdevs-org')
 
@@ -17,6 +18,7 @@ db.once('open', () => {
 export default () => function *mongodb(next) {
   this.db = db
   this.db.User = User
+  this.db.Session = Session
 
   yield next
 }
