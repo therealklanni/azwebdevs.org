@@ -34,6 +34,11 @@ app.use(compose([
   serve(path.resolve('./public'), { defer: true })
 ]))
 
+// routes
+import routes from './routes'
+
+app.use(routes)
+
 app.use(function *(next) {
   this.body = 'Hello world'
   yield next
