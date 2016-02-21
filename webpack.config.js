@@ -1,15 +1,15 @@
-import webpack from 'webpack'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import autoprefixer from 'autoprefixer'
-import path from 'path'
+var webpack = require('webpack')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var autoprefixer = require('autoprefixer')
+var path = require('path')
 
-let jsLoaders = ['babel?presets[]=react,presets[]=2015']
+var jsLoaders = ['babel?presets[]=react,presets[]=2015']
 
 if (process.env.NODE_ENV !== 'production') {
   jsLoaders.unshift('react-hot')
 }
 
-const config = {
+module.exports = {
   entry: getEntrySources([path.resolve('client/index')]),
   output: {
     path: path.resolve('build'),
@@ -48,5 +48,3 @@ function getEntrySources(sources) {
 
   return sources
 }
-
-export default config

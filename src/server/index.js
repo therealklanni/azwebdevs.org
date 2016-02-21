@@ -52,7 +52,7 @@ app.listen(port, () => {
 // Webpack Dev Server for hot reloading
 import webpack from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
-import config from './webpack.config.babel.js'
+import config from '../../webpack.config.js'
 
 new WebpackDevServer(webpack(config), {
   hot: true,
