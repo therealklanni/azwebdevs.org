@@ -1,1 +1,1 @@
-nodemon --ignore build/ -e js,jsx --exec \"npm run build && nf start\"; npm stop
+nodemon --ignore build/ --ignore src/client/ -e js,jsx --exec 'npm run build:backend && nf start'; npm stop

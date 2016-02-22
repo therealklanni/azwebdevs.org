@@ -3,14 +3,14 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var autoprefixer = require('autoprefixer')
 var path = require('path')
 
-var jsLoaders = ['babel?presets[]=react,presets[]=2015']
+var jsLoaders = ['babel']
 
 if (process.env.NODE_ENV !== 'production') {
   jsLoaders.unshift('react-hot')
 }
 
 module.exports = {
-  entry: getEntrySources([path.resolve('client/index')]),
+  entry: getEntrySources([path.resolve('src/client/index')]),
   output: {
     path: path.resolve('build'),
     filename: 'bundle.js'
@@ -19,7 +19,10 @@ module.exports = {
     loaders: [
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
+        loader: ExtractTextPlugin.extract(
+          'style',
+          'css?sourceMap!postcss!sass?sourceMap'
+        )
       },
       {
         test: /\.js$/,

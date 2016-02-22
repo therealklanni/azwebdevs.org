@@ -1,1 +1,1 @@
-babel src -sd build
+babel --source-root src --source-maps inline -d build/server src/server

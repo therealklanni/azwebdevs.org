@@ -1,1 +1,1 @@
-webpack-dev-server --progress --colors --devtool source-map --config webpack.config.babel.js
+webpack --progress --colors --devtool inline-source-map --config webpack.config.js
