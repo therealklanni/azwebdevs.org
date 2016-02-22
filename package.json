@@ -50,6 +50,7 @@
     "ava": "^0.12.0",
     "eslint": "^2.0.0",
     "eslint-config-troysconfig": "^1.0.8",
+    "eslint-plugin-react": "^4.0.0",
     "faucet": "0.0.1",
     "foreman": "^1.4.1",
     "nodemon": "^1.8.1",
