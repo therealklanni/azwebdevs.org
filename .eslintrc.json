@@ -1,8 +1,16 @@
 {
   "extends":  "eslint-config-troysconfig",
+  "plugins": [
+    "react"
+  ] ,
   "rules": {
       "space-before-function-paren": [2, { "anonymous": "always", "named": "never"  }],
-      "semi": [2, "never"]
+      "semi": [2, "never"],
+      "react/prefer-es6-class": [2, "always"],
+      "react/jsx-no-duplicate-props": [2, { "ignoreCase": false }],
+      "react/jsx-uses-vars": 2,
+      "react/no-direct-mutation-state": 2,
+      "react/no-unknown-property": 2
   },
   "env": {
       "node": true
