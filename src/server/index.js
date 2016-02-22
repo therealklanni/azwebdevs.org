@@ -48,20 +48,22 @@ import webpack from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
 import config from '../../webpack.config.js'
 
-new WebpackDevServer(webpack(config), {
-  hot: true,
-  historyApiFallback: true,
-  proxy: {
-    '*': `http://localhost:${port}`
-  },
-  stats: {
-    colors: true
-  },
-  devtool: 'inline-source-map'
-}).listen(3001, 'localhost', (err, result) => {
-  if (err) {
-    debug(err)
-  }
+if (process.env.NODE_ENV !== 'production') {
+  new WebpackDevServer(webpack(config), {
+    hot: true,
+    historyApiFallback: true,
+    proxy: {
+      '*': `http://localhost:${port}`
+    },
+    stats: {
+      colors: true
+    },
+    devtool: 'inline-source-map'
+  }).listen(3001, 'localhost', (err, result) => {
+    if (err) {
+      debug(err)
+    }
 
-  debug(`${result}: Listening at http://localhost:3001`)
-})
+    debug(`${result}: Listening at http://localhost:3001`)
+  })
+}
