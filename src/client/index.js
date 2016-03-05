@@ -1,9 +1,14 @@
 import '../scss/main.scss'
 import React from 'react'
-import ReactDOM from 'react-dom'
-import Hello from './Hello'
+import { render } from 'react-dom'
+import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router'
+import MainLayout from './MainLayout'
+import Home from './Home'
 
-ReactDOM.render(
-  <Hello />,
-  document.getElementById('app')
-)
+render((
+  <Router history={browserHistory}>
+    <Router path="/" component={MainLayout}>
+      <IndexRoute component={Home} />
+    </Router>
+  </Router>
+), document.getElementById('app'))
