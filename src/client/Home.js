@@ -1,6 +1,5 @@
 import React from 'react'
 import TabContentContainer from './TabContentContainer'
-import Logo from './Logo'
 
 const Home = () => (
   <div className="home-content">
@@ -13,7 +12,9 @@ const Home = () => (
       <label htmlFor="tab3">Meetups</label>
     </div>
     <TabContentContainer />
-    <Logo />
+    <div className="logo home-content__logo">
+      <span>{'{az}'}</span>
+    </div>
   </div>
 )
 
